@@ -12,11 +12,12 @@ export default class SearchBarContainer extends Component {
   }
 
   fetchResults(searchPhrase) {
+    if (searchPhrase === '') return;
+    var { passResults } = this.props;
     this.setState({userPhrase: searchPhrase});
-    console.log(searchPhrase);
     axios.post('/search', { searchPhrase })
     .then((response) => {
-      console.log(response);
+      passResults(response.data.images);
     })
     .catch((err) => {
       console.log(err);
