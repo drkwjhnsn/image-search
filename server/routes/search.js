@@ -7,7 +7,7 @@ router.post('/', (req, res) => {
   console.log(req.body);
   var editedPhrase = removeNonAlpha(req.body.searchPhrase);
   if (!isInDictionary(editedPhrase)) {
-    console.log('not a word');
+    editedPhrase = variableVowelMatch(editedPhrase);
   }
   res.send({
     editedPhrase
