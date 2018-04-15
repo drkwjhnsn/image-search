@@ -27,10 +27,13 @@ function gettyApiCall(phrase) {
       'Api-Key': process.env.GETTY_API_KEY
     },
     params: {
-      phrase,
+      phrase: '',
       fields: ['display_set']
     }
   })
+  .catch((err) => {
+    return Promise.reject(new Error('search/images endpoint error'));
+  });
 }
 
 module.exports = router;
