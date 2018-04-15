@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import SearchBarContainer from './SearchBarContainer.jsx';
+import Gallery from '../components/Gallery.jsx';
 
 export default class App extends Component {
   constructor(props) {
@@ -16,8 +17,12 @@ export default class App extends Component {
   }
 
   render() {
+    var { images } = this.state;
     return (
-      <SearchBarContainer passResults={this.receiveImageMeta} />
+      <div>
+        <SearchBarContainer passResults={this.receiveImageMeta} />
+        <Gallery images={images} />
+      </div>
     );
   }
 }

@@ -5,7 +5,6 @@ var { removeNonAlpha } = require('../utils/stringUtils.js');
 var { isInDictionary, variableVowelMatch } = require('../utils/dictionaryUtils.js');
 
 router.post('/', (req, res) => {
-  console.log(req.body);
   var editedPhrase = removeNonAlpha(req.body.searchPhrase);
   if (!isInDictionary(editedPhrase)) {
     editedPhrase = variableVowelMatch(editedPhrase);
@@ -27,7 +26,7 @@ function gettyApiCall(phrase) {
       'Api-Key': process.env.GETTY_API_KEY
     },
     params: {
-      phrase: '',
+      phrase,
       fields: ['display_set']
     }
   })
