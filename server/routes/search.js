@@ -1,9 +1,14 @@
 var express = require('express');
 var router = express.Router();
+var { removeNonAlpha } = require('../utils/stringUtils.js');
+var { isInDictionary, variableVowelMatch } = require('../utils/dictionaryUtils.js');
 
 router.post('/', (req, res) => {
   console.log(req.body);
-  res.send(req.body)
+  var editedPhrase = removeNonAlpha(req.body.searchPhrase);
+  res.send({
+    editedPhrase
+  })
 });
 
 module.exports = router;
