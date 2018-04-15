@@ -14,6 +14,13 @@ export default class SearchBarContainer extends Component {
   fetchResults(searchPhrase) {
     this.setState({userPhrase: searchPhrase});
     console.log(searchPhrase);
+    axios.post('/search', { searchPhrase })
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((err) => {
+      console.log(err);
+    })
   }
 
   render() {
