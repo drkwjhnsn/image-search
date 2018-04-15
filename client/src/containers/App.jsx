@@ -6,14 +6,20 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      images: []
+      images: [],
+      modalImageIdx: -1
     }
 
     this.receiveImageMeta = this.receiveImageMeta.bind(this);
+    this.selectModalImage = this.selectModalImage.bind(this);
   }
 
   receiveImageMeta(images) {
     this.setState({ images });
+  }
+
+  selectModalImage(modalImageIdx) {
+    this.setState({ modalImageIdx });
   }
 
   render() {
@@ -21,7 +27,7 @@ export default class App extends Component {
     return (
       <div>
         <SearchBarContainer passResults={this.receiveImageMeta} />
-        <Gallery images={images} />
+        <Gallery images={images} handleSelection={this.selectModalImage} />
       </div>
     );
   }
