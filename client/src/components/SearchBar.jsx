@@ -9,7 +9,7 @@ export default ({ submitPhrase }) => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="SearchBar" onSubmit={handleSubmit}>
       <input
         className="SearchBar-textInput"
         type="text"

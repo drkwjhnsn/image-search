@@ -2,7 +2,7 @@ import React from 'react';
 import Thumbnail from './Thumbnail.jsx';
 
 export default ({ images, handleSelection }) => (
-  <div>
+  <div className="Gallery">
     { images.map((image, idx) => (
       <Thumbnail
         key={idx}

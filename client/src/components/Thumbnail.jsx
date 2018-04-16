@@ -6,6 +6,8 @@ export default ({ idx, uri, handleSelection }) => {
   }
 
   return (
-    <img src={uri} onClick={handleClick}/>
+    <div className="Thumbnail">
+      <img src={uri} onClick={handleClick}/>
+    </div>
   );
 }

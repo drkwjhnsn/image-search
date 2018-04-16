@@ -1,0 +1,65 @@
+body {
+  margin: 0;
+}
+
+.SearchBar {
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  height: 8vh;
+  background-color: #333;
+  display: flex;
+  justify-content: space-between;
+}
+
+.SearchBar > * {
+  margin: 2vh 0;
+  padding: 5px;
+  border: none;
+  background-color: #fff;
+}
+
+.SearchBar > *:focus {
+  outline: none;
+}
+
+.SearchBar-textInput {
+  margin-left: 3vh;
+  flex-grow: 1;
+  border-right: 1px solid #999;
+  border-radius: 5px 0 0 5px;
+}
+
+.SearchBar-submitButton {
+  margin-right: 3vh;
+  width: 15vh;
+  border-radius: 0 5px 5px 0;
+}
+
+/* move to non-mobile breakpoint */
+
+/* .SearchBar-submitButton:hover {
+  background-color: #bbb;
+} */
+
+.SearchBar-submitButton:active {
+  background-color: #999;
+}
+
+.Gallery {
+  margin-top: 8vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.Thumbnail {
+  min-width: 170px;
+  margin: 1vh 0;
+}
+
+.Thumbnail > img {
+  display: block;
+  margin: auto;
+}
