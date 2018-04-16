@@ -17,7 +17,6 @@ export default class App extends Component {
     this.fetchResults = this.fetchResults.bind(this);
     this.selectModalImage = this.selectModalImage.bind(this);
     this.closeModal = this.closeModal.bind(this);
-    this.loadMore = this.loadMore.bind(this);
   }
 
   fetchResults(searchPhrase) {
@@ -43,10 +42,6 @@ export default class App extends Component {
 
   closeModal() {
     this.setState({modalImageIdx: -1});
-  }
-
-  loadMore(page) {
-
   }
 
   render() {
