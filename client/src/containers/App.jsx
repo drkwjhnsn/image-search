@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import SearchBarContainer from './SearchBarContainer.jsx';
 import axios from 'axios';
 import SearchBar from '../components/SearchBar.jsx';
 import Gallery from '../components/Gallery.jsx';
@@ -10,6 +9,7 @@ export default class App extends Component {
     super(props);
     this.state = {
       userPhrase: '',
+      editedPhrase: '',
       images: [],
       modalImageIdx: -1
     }
@@ -17,6 +17,7 @@ export default class App extends Component {
     this.fetchResults = this.fetchResults.bind(this);
     this.selectModalImage = this.selectModalImage.bind(this);
     this.closeModal = this.closeModal.bind(this);
+    this.loadMore = this.loadMore.bind(this);
   }
 
   fetchResults(searchPhrase) {
@@ -24,9 +25,10 @@ export default class App extends Component {
     this.setState({userPhrase: searchPhrase});
     axios.post('/search', { searchPhrase })
     .then((response) => {
-      var { images, result_count } = response.data;
+      var { images, result_count, editedPhrase } = response.data;
       this.setState({
         images,
+        editedPhrase,
         resultCount: result_count
       });
     })
@@ -43,18 +45,23 @@ export default class App extends Component {
     this.setState({modalImageIdx: -1});
   }
 
+  loadMore(page) {
+
+  }
+
   render() {
-    var { images, modalImageIdx } = this.state;
+    var { images, modalImageIdx, editedPhrase, userPhrase} = this.state;
     var ternaryWrappedModal = modalImageIdx !== -1
       ? <ImageModal
         image={images[modalImageIdx]}
         handleClick={this.closeModal} />
       : '';
-
     return (
       <div>
-        <SearchBar submitPhrase={this.fetchResults}/>
-        <Gallery images={images} handleSelection={this.selectModalImage} />
+        <SearchBar submitPhrase={this.fetchResults} />
+        <Gallery
+          images={images}
+          handleSelection={this.selectModalImage} />
         { ternaryWrappedModal }
       </div>
     );

@@ -40,6 +40,7 @@ function gettyApiCall(phrase) {
     },
     params: {
       phrase,
+      page_size: 50,
       fields: ['display_set']
     }
   })
