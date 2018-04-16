@@ -32,7 +32,7 @@ if you have Heroku installed locally the app can be deployed navigating to the r
 ```
 git push heroku master
 ```
-Otherwise an instance is currently deployed [here](https://pages.github.com/) (NB: This is a feature branch deployment with an infinite scroll component not included in the master branch).
+Otherwise an instance is currently deployed [here](https://peaceful-wildwood-79598.herokuapp.com/) (NB: This is a feature branch deployment with an infinite scroll component not included in the master branch).
 
 ## Design Choices
 
