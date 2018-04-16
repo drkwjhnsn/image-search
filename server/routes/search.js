@@ -5,10 +5,23 @@ var { removeNonAlpha } = require('../utils/stringUtils.js');
 var { isInDictionary, variableVowelMatch } = require('../utils/dictionaryUtils.js');
 
 router.post('/', (req, res) => {
-  var editedPhrase = removeNonAlpha(req.body.searchPhrase);
-  if (!isInDictionary(editedPhrase)) {
-    editedPhrase = variableVowelMatch(editedPhrase);
-  }
+
+  // multi-word phrase implemenation
+  var phraseArray = req.body.searchPhrase.split(' ');
+  var editedPhrase = phraseArray.map((word) => {
+    word = removeNonAlpha(word);
+    if (!isInDictionary(word)) {
+      word = variableVowelMatch(word);
+    }
+    return word;
+  }).filter((word) => word !== '').join(' ');
+
+  // // Original single word phrase implementation
+  // var editedPhrase = removeNonAlpha(req.body.searchPhrase);
+  // if (!isInDictionary(editedPhrase)) {
+  //   editedPhrase = variableVowelMatch(editedPhrase);
+  // }
+
   gettyApiCall(editedPhrase)
   .then(({ data }) => {
     res.send(Object.assign(data, { editedPhrase }));
