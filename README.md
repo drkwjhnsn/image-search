@@ -24,6 +24,13 @@ npm run serve
 
 If running locally, the server will default to localhost at port 3000
 
+To actually retrieve images from the Getty API you will need to register with them at <http://developers.gettyimages.com/en/>. Then from the root directory run
+```
+touch .env
+
+echo "GETTY_API_KEY=YOUR_ACTUAL_API_KEY" > .env
+```
+
 
 ## Deployment
 
