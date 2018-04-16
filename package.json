@@ -7,7 +7,8 @@
     "deb-build": "webpack -wd",
     "build": "webpack -p",
     "dev-serve": "nodemon server/index.js",
-    "serve": "node server/index.js"
+    "serve": "node server/index.js",
+    "heroku-postbuild": "webpack -p"
   },
   "author": "Derek Johnson",
   "license": "ISC",
